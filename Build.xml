@@ -1,0 +1,38 @@
+
+<project name="CICD" default="end" basedir="." xmlns:sf="antlib:com.salesforce">
+    <!-- Properties referred by the process-->
+    <property file="Build.properties"/>
+    <property environment="env"/>
+	
+	<taskdef resource="com/salesforce/antlib.xml">
+      <classpath>
+          <pathelement location="D:/Documents/WORK/ANT/salesforce_ant_45.0/ant-salesforce.jar" />
+      </classpath>
+  </taskdef>
+
+
+
+	<!-- A.Build and deployment process initiation-->
+	<target name="start">
+			<echo> Build process started...</echo>
+	</target>
+                
+    <!-- B.Run tests and deploy code -->
+    <target name="DeployCode" depends="start">
+		<!-- Run tests on specified Apex classes and deploy the code contents to Force.com server -->
+		<sf:deploy 
+				username="${sf.username}" 
+				password="${sf.password}" 
+				serverurl="${sf.serverurl}" 
+				deployRoot="src"
+				runalltests="true" 
+                pollWaitMillis=	"${sf.pollWaitMillis}"		
+				logType="${sf.logType}">
+		</sf:deploy>
+	</target>
+
+	<!-- C. Mark the end of the build process -->
+	<target name="end" description="End of build and deployment process" depends="DeployCode">
+		<echo> Build successfully completed !!! </echo>  
+	</target>
+</project>
