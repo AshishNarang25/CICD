@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "D:\\Documents\\WORK\\CICD\\CICD_Project_New"
+		},
+		{
+			"path": "src"
+		}
+	],
+	"settings": {
+		"eslint.nodePath": "c:\\Users\\ashishnarang\\.vscode\\extensions\\salesforce.salesforcedx-vscode-lwc-45.8.0\\node_modules"
+	}
+}
